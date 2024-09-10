@@ -1,0 +1,19 @@
+Js runs at client side in the server.
+typescript, react or etc are at the end trasnpile to js.
+compiler =  convert into machine code.
+transpiler =   one prog. language to another prog. language.
+browser knows only js.
+Js follows Bodmas to cal. maths.
+
+1. Numbers and string-
+use + to concatenate the string.
+
+<p> Content </p> <p> are tags aur puri line ko tag aur content ko milaake banta hai element.
+
+
+// Query selector
+1. getElementById: find one elements by its Id. 
+ex. <button id="click-me">Button</button>
+ab console me jaao aur search kro document.getElementById = ("click-me)
+
+<script> tag

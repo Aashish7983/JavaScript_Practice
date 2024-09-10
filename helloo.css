@@ -1,0 +1,19 @@
+.h1{
+    background-color: aqua;
+}
+
+.input{
+    background-color: burlywood;
+}
+
+.div2{
+    background-color: gray;
+}
+
+.div3{
+    background-color: gray;
+}
+.div1{
+    background-color: bisque;
+    display: flex   ;
+}

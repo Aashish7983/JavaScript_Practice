@@ -1,0 +1,1937 @@
+Coding:-
+Index.php
+<?php session_start(); ?>
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Basic -->
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<!-- Mobile M etas -->
+<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<!-- Site Metas -->
+<title>diesease</title>
+<!-- Site Icons -->
+<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<!-- Site CSS -->
+<link rel="stylesheet" href="style.css">
+<!-- Colors CSS -->
+
+<!-- ALL VERSION CSS -->
+<link rel="stylesheet" href="css/versions.css">
+<!-- Responsive CSS -->
+<link rel="stylesheet" href="css/responsive.css">
+<!-- Custom CSS -->
+<link rel="stylesheet" href="css/custom.css">
+
+</head>
+<body class="politics_version">
+
+<!-- LOADER -->
+<div id="preloader">
+<div id="main-ld">
+<div id="loader"></div>
+</div>
+</div><!-- end loader -->
+<!-- END LOADER -->
+
+<div class="topbar text-center hidden-xs">
+<p><marquee>Please Stay Aware about Current Situvation. Maintain the social distencing. Covid-19 Stay safe stay home. Wear mask and wash your hands regular.</marquee>  </p>
+</div>
+
+<header class="header header_style_01">
+<nav class="megamenu navbar navbar-default">
+<div class="container">
+<div class="navbar-header">
+<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+<span class="sr-only">Toggle navigation</span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+</button>
+<a class="navbar-brand" href="dashboard.php"><img src="logo.png" alt="image"></a>
+</div>
+<div id="navbar" class="navbar-collapse collapse">
+<ul class="nav navbar-nav navbar-right">
+<li><a data-scroll-nav="0" href="#main-banner" class="active">Home</a></li>
+<li><a href="login.php">Login</a></li>
+<li><a href="register.php">Register Now</a></li>
+</ul>
+</div>
+</div>
+</nav>
+</header>
+
+<div id="main-banner" class="banner-one" data-scroll-index="0">
+<div data-src="uploads/slide-1.jpg">
+<div class="camera_caption">
+<div class="container">
+<h1 class="wow fadeInUp animated">Know About the some Disease and it's #Symptoms</h1
+<p class="wow fadeInUp animated" data-wow-delay="0.2s">With the help of this website, you can know  about some disease and Symptoms.</p>
+<a data-scroll href="login.php" class="btn btn-light btn-radius btn-brd grd1">Login</a>
+<a data-scroll href="register.php" class="btn btn-light btn-radius btn-brd grd1">Register</a>
+</div> <!-- /.container -->
+</div> <!-- /.camera_caption -->
+</div>
+<div data-src="uploads/slide-2.jpg">
+<div class="camera_caption">
+<div class="container">
+<h1 class="wow fadeInUp animated">Know About the some Disease and it's #Symptoms</h1>
+<p class="wow fadeInUp animated" data-wow-delay="0.2s">With the help of this website, you can know  about some disease and Symptoms.</p>
+<a data-scroll href="login.php" class="btn btn-light btn-radius btn-brd grd1">Login</a>
+<a data-scroll href="register.php" class="btn btn-light btn-radius btn-brd grd1">Register</a>
+</div> <!-- /.container -->
+</div> <!-- /.camera_caption -->
+</div>
+<div data-src="uploads/slide-3.jpeg">
+<div class="camera_caption">
+<div class="container">
+<h1 class="wow fadeInUp animated">Know About the some Disease and it's #Symptoms</h1>
+<p class="wow fadeInUp animated" data-wow-delay="0.2s">With the help of this website, you can know  about some disease and Symptoms.</p>
+<a data-scroll href="login.php" class="btn btn-light btn-radius btn-brd grd1">Login</a>
+<a data-scroll href="register.php" class="btn btn-light btn-radius btn-brd grd1">Register</a>
+</div> <!-- /.container -->
+</div> <!-- /.camera_caption -->
+</div>
+</div> <!-- /#theme-main-banner -->
+
+<a href="#" id="scroll-to-top" class="dmtop global-radius"><i class="fa fa-angle-up"></i></a>
+
+<!-- ALL JS FILES -->
+<script src="js/all.js"></script>
+<!-- Camera Slider -->
+<script src="js/jquery.mobile.customized.min.js"></script>
+<script src="js/jquery.easing.1.3.js"></script>
+<script src="js/camera.min.js"></script>
+<script src="js/scrollIt.min.js"></script>
+<!-- ALL PLUGINS -->
+<script src="js/custom.js"></script>
+<script src="js/jquery.vide.js"></script>
+
+</body>
+</html>
+
+Login.php:
+<!-- this is for donor registraton -->
+<div class="login" style="background-color:#fff;">
+<h1 class="text-center" Style="text-align: center;">User Login</h1>
+
+<form action="" method="post" class="" Style="text-align: center;>
+<div class="col-md-12">
+<div class="col-md-4"></div>
+<div class="col-md-4">
+Email 	  :	<input type="email" name="email"  placeholder="Enter your email" required></br></br>
+Password  : 	<input type="password" name="password"  placeholder="Enter your password" required></br></br>
+
+
+<!-- <button name="submit" type="submit">Login</button> <br> -->
+
+<input type="submit" value="Login" name="submit">
+
+<!-- login validation -->
+<?php
+
+// $_SESSION['userstatus']="";
+
+include('connect.php');
+if(isset($_POST["submit"])){
+$sql= "SELECT * FROM users WHERE email= '" . $_POST["email"]."' AND password= '" . $_POST["password"]."'";
+
+$result = $con->query($sql);
+
+if ($result->num_rows > 0) {
+// $_SESSION["email"]= $_POST["email"];
+// $_SESSION['userstatus']= "yes";
+echo "<script>location.replace('dashboard.php');</script>";
+// echo "u are supposed to redirect to ur profile";
+} else {
+echo "<span style='color:red;'>Invalid username or password</span>";
+}
+$con->close();
+}
+
+?>
+<!-- login validation End-->
+
+
+</form><br><br>
+
+
+Not A User?<a href="register.php" style="color:#C30">Click here</a> to Register.<br></br>
+<a href="index.php">Go back to home</a>                                                                    </div>
+<div class="col-md-4"></div>
+</div> <!-- col-md-12 -->
+</div>
+</div><!--  containerFluid Ends -->
+<script src="js/bootstrap.min.js"></script>
+
+</body>
+</html>
+Register.php
+
+<?php
+session_start();
+?>
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body Style="text-align: center;>
+<div class="header">
+<h2>Please Enter Your Details Carefully.</h2>
+</div>
+<pre>
+<form method="post" action="connection.php">
+Username :  	<input type="text" name="username" placeholder="Enter username" required>
+Email    :	<input type="email" name="email" Placeholder="Enter your Email id" required>
+Password :	<input type="password" name="password" Placeholder="Enter Password" required>
+Address  :	<input type="text" name="address" Placeholder="Enter Address" required>
+<button type="submit" name="register">Register</button>
+
+Already a member? <a href="login.php">Login<a></br>
+<a href="index.php">Go back to home</a>
+</pre>
+
+</form>
+</body>
+</html>
+
+Logout.php
+
+<?php
+session_start();
+session_destroy();
+header('location:login.php');
+
+?>
+
+Dashboard.php
+
+<?php
+session_start();
+?>
+<html lang="en">
+
+<!-- Basic -->
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<!-- Mobile Metas -->
+<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<!-- Site Metas -->
+<title>Dashboard</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+<meta name="author" content="">
+
+<!-- Site Icons -->
+<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<!-- Site CSS -->
+<link rel="stylesheet" href="style.css">
+<!-- Colors CSS -->
+<!-- ALL VERSION CSS -->
+<link rel="stylesheet" href="css/versions.css">
+<!-- Responsive CSS -->
+<link rel="stylesheet" href="css/responsive.css">
+<!-- Custom CSS -->
+<link rel="stylesheet" href="css/custom.css">
+
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+<p style="color:Blue;background:yellow"><marquee>Please Stay Aware about Current Situvation. Maintain the social distencing. Covid-19 Stay safe stay home. Wear mask and wash your hands regular.</marquee>  </p>
+</head>
+<body class="politics_version">
+
+<!-- LOADER -->
+<div id="preloader">
+<div id="main-ld">
+<div id="loader"></div>
+</div>
+</div><!-- end loader -->
+<!-- END LOADER -->
+<div class="topbar text-center hidden-xs">
+
+</div>
+<header class="header header_style_01">
+<nav class="megamenu navbar navbar-default">
+<div class="container">
+<div class="navbar-header">
+<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+<span class="sr-only">Toggle navigation</span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+</button>
+<a class="navbar-brand" href="dashboard.php"><img src="logo.png" alt="images"></a>
+</div>
+<div id="navbar" class="navbar-collapse collapse">
+<ul class="nav navbar-nav navbar-right">
+<li><a data-scroll-nav="0" href="#main-banner" class="active">Home</a></li>
+</ul
+</div>
+<li Style="text-Align:right"><a  href="logout.php">Logout</a></li>
+</div>        </nav>
+</header>
+<div id="event" data-scroll-index="3" class="section wb" style="background-image: url('dashboard.jpg');">
+<div class="container">
+<div class="section-title text-center">
+<h3>Disease</h3>
+</div><!-- end title -->
+<div class="row">
+<div class="col-md-4">
+<div class="participate-wrap">
+<!--<small>Technology</small>-->
+<figure>
+<img src="uploads/heart.jpg" alt="" class="img-responsive">
+<!--<figcaption><a href="#" class="global-radius"> <i class="flaticon-unlink"></i> </a></figcaption>-->
+</figure>
+<div class="event_dit">
+<h4>Heart Disease</h4>
+
+<p>Some Details of Heart Disease </p>
+<a href="heart.html" class="btn btn-light btn-radius btn-brd grd1">Detail</a>
+</div>
+</div><!-- end participate -->
+</div><!-- end col -->
+<div class="col-md-4">
+<div class="participate-wrap">
+<!--<small>Let's Speak with Us</small>-->
+<figure>
+<img src="uploads/head.jpg" alt="" class="img-responsive">
+<!--<figcaption><a href="#" class="global-radius"> <i class="flaticon-unlink"></i> </a></figcaption>-->
+</figure>
+<div class="event_dit">
+<h4>Head Disease</h4>
+
+<p>Some Details of Head Disease </p>
+<a href="head.html" class="btn btn-light btn-radius btn-brd grd1">Detail</a>
+</div>
+</div><!-- end participate -->
+</div><!-- end col -->
+
+<div class="col-md-4">
+<div class="participate-wrap">
+<!--<small>Let's Speak with Us</small>-->
+<figure>
+<img src="uploads/stomach.jpg" alt="" class="img-responsive">
+<!--<figcaption><a href="#" class="global-radius"> <i class="flaticon-unlink"></i> </a></figcaption>-->
+</figure>
+<div class="event_dit">
+<h4>Stomach Disease</h4>
+
+<p>Some Details of Stomach Disease </p>
+<a href="stomach.html" class="btn btn-light btn-radius btn-brd grd1">Detail</a>
+</div>
+</div><!-- end participate -->
+</div><!-- end col -->
+</div><!-- end row -->
+</div><!-- end container -->
+</div><!-- end section -->
+
+<div class="copyrights">
+<div class="container">
+<div class="footer-distributed">
+<div class="footer-left">
+<p class="footer-company-name">This website is made by group No 20 of BCA department of I.P college as a Major Project</p>
+</div>
+</div>
+</div><!-- end container -->
+</div><!-- end copyrights -->
+
+<!-- ALL JS FILES -->
+<script src="js/all.js"></script>
+<!-- Camera Slider -->
+<script src="js/jquery.mobile.customized.min.js"></script>
+<script src="js/jquery.easing.1.3.js"></script>
+<script src="js/camera.min.js"></script>
+<script src="js/scrollIt.min.js"></script>
+<!-- ALL PLUGINS -->
+<script src="js/custom.js"></script>
+<script src="js/jquery.vide.js"></script>
+
+</body>
+</html>
+
+Contact.php
+
+<?php
+session_start();
+if(!$_POST) exit;
+
+// Email address verification, do not edit.
+function isEmail($email) {
+return(preg_match("/^[-_.[:alnum:]]+@((([[:alnum:]]|[[:alnum:]][[:alnum:]-]*[[:alnum:]])\.)+(ad|ae|aero|af|ag|ai|al|am|an|ao|aq|ar|arpa|as|at|au|aw|az|ba|bb|bd|be|bf|bg|bh|bi|biz|bj|bm|bn|bo|br|bs|bt|bv|bw|by|bz|ca|cc|cd|cf|cg|ch|ci|ck|cl|cm|cn|co|com|coop|cr|cs|cu|cv|cx|cy|cz|de|dj|dk|dm|do|dz|ec|edu|ee|eg|eh|er|es|et|eu|fi|fj|fk|fm|fo|fr|ga|gb|gd|ge|gf|gh|gi|gl|gm|gn|gov|gp|gq|gr|gs|gt|gu|gw|gy|hk|hm|hn|hr|ht|hu|id|ie|il|in|info|int|io|iq|ir|is|it|jm|jo|jp|ke|kg|kh|ki|km|kn|kp|kr|kw|ky|kz|la|lb|lc|li|lk|lr|ls|lt|lu|lv|ly|ma|mc|md|me|mg|mh|mil|mk|ml|mm|mn|mo|mp|mq|mr|ms|mt|mu|museum|mv|mw|mx|my|mz|na|name|nc|ne|net|nf|ng|ni|nl|no|np|nr|nt|nu|nz|om|org|pa|pe|pf|pg|ph|pk|pl|pm|pn|pr|pro|ps|pt|pw|py|qa|re|ro|ru|rw|sa|sb|sc|sd|se|sg|sh|si|sj|sk|sl|sm|sn|so|sr|st|su|sv|sy|sz|tc|td|tf|tg|th|tj|tk|tm|tn|to|tp|tr|tt|tv|tw|tz|ua|ug|uk|um|us|uy|uz|va|vc|ve|vg|vi|vn|vu|wf|ws|ye|yt|yu|za|zm|zw)$|(([0-9][0-9]?|[0-1][0-9][0-9]|[2][0-4][0-9]|[2][5][0-5])\.){3}([0-9][0-9]?|[0-1][0-9][0-9]|[2][0-4][0-9]|[2][5][0-5]))$/i",$email));
+}
+
+if (!defined("PHP_EOL")) define("PHP_EOL", "\r\n");
+
+$first_name     = $_POST['first_name'];
+$last_name     = $_POST['last_name'];
+$email    = $_POST['email'];
+$phone   = $_POST['phone'];
+$select_price   = $_POST['select_price'];
+$select_service   = $_POST['select_service'];
+$subject  = $_POST['subject'];
+$comments = $_POST['comments'];
+$verify   = $_POST['verify'];
+
+if(trim($first_name) == '') {
+echo '<div class="error_message">Attention! You must enter your name.</div>';
+exit();
+}  else if(trim($email) == '') {
+echo '<div class="error_message">Attention! Please enter a valid email address.</div>';
+exit();
+} else if(!isEmail($email)) {
+echo '<div class="error_message">Attention! You have enter an invalid e-mail address, try again.</div>';
+exit();
+}
+
+if(trim($comments) == '') {
+echo '<div class="error_message">Attention! Please enter your message.</div>';
+exit();
+}
+
+if(get_magic_quotes_gpc()) {
+$comments = stripslashes($comments);
+}
+// Configuration option.
+// Enter the email address that you want to emails to be sent to.
+// Example $address = "joe.doe@yourdomain.com";
+
+//$address = "example@themeforest.net";
+$address = "niteshmoriya3939@gmail.com";
+// Configuration option.
+// i.e. The standard subject will appear as, "You've been contacted by John Doe."
+// Example, $e_subject = '$name . ' has contacted you via Your Website.';
+$e_subject = 'You\'ve been contacted by ' . $first_name . '.';
+// Configuration option.
+// You can change this if you feel that you need to.
+// Developers, you may wish to add more fields to the form, in which case you must be sure to add them here.
+$e_body = "You have been contacted by $first_name. $first_name selected service of $select_service, their additional message is as follows. Customer max budge is $select_price, for this project." . PHP_EOL . PHP_EOL;
+$e_content = "\"$comments\"" . PHP_EOL . PHP_EOL;
+$e_reply = "You can contact $first_name via email, $email or via phone $phone";
+$msg = wordwrap( $e_body . $e_content . $e_reply, 70 );
+$headers = "From: $email" . PHP_EOL;
+$headers .= "Reply-To: $email" . PHP_EOL;
+$headers .= "MIME-Version: 1.0" . PHP_EOL;
+$headers .= "Content-type: text/plain; charset=utf-8" . PHP_EOL;
+$headers .= "Content-Transfer-Encoding: quoted-printable" . PHP_EOL;
+if(mail($address, $e_subject, $msg, $headers)) {
+// Email has sent successfully, echo a success page.
+
+echo "<fieldset>";
+echo "<div id='success_page'>";
+echo "<h1>Email Sent Successfully.</h1>";
+echo "<p>Thank you <strong>$first_name</strong>, your message has been submitted to us.</p>";
+echo "</div>";
+echo "</fieldset>";
+
+} else {	echo 'ERROR!';
+
+}
+
+Connection.php
+
+<html>
+<body>
+<?php
+session_start();
+include('connect.php');
+$username=$_POST['username'];
+$email=$_POST['email'];
+$password=$_POST['password'];
+$address=$_POST['address'];
+$q="insert into users(username,email,password,address) values('$username','$email','$password','$address')";
+$i=mysqli_query($con,$q);
+if($i==1)
+echo "you are registered";
+?>
+<a href="login.php"> Go Back to login</a>
+</body>
+</html>
+
+
+Constipation.html
+<!DOCTYPE html>
+<html>
+<title>disease</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<body Style="background-image: url('dashboard.jpg');">
+
+<div class="w3-container" style="text-align:center">
+<h2 style="text-align:center">Constipation</h2>
+<p>Constipation occurs when a person has difficulty emptying the
+large bowel. Home remedies and lifestyle changes can often help
+resolve it, but sometimes, it may need medical attention.
+Constipation can happen for many reasons, such as when stool
+passes through the colon too slowly. The slower the food moves
+through the digestive tract, the more water the colon will absorb
+and the harder the feces will become. </p>
+</div>
+<div class="w3-bar w3-black">
+<button class="w3-bar-item w3-button" onclick="openCity('London')">Symptoms of Diseases.</button>
+<button class="w3-bar-item w3-button" onclick="openCity('Paris')">Precautions of diseases.</button>
+<button class="w3-bar-item w3-button" onclick="openCity('Tokyo')">Name of perfectionist of diseases in india.</button>
+</div>
+<div id="London" class="w3-container city">
+<h2 style="text-align:center">Symptoms of Diseases.</h2>
+<list >
+<ul>
+<li>difficulty passing stool straining when passing stool </li>
+<li>pain and cramping in the abdomen </li>
+<li>feeling bloated </li>
+<li>nausea </li>
+<li>a loss of appetite </li>
+</ul>
+</list>
+</div>
+
+<div id="Paris" class="w3-container city" style="display:none" >
+<h2 style="text-align:center">Precautions of diseases</h2>
+<list">
+<ul>
+<li>Eat  a well-balanced diet with plenty of fiber. </li>
+<li>Drink eight 8-once glassesof a water. </li>
+<li>Exercise regularly. </li>
+<li>Treat mild constipation with a dietry supplement like magnesium. </li>
+<li>Move your bowels when you feel the urge. </li>
+</ul>
+</list>
+</div>
+
+<div id="Tokyo" class="w3-container city" style="display:none">
+<h2 style="text-align:center">Name of perfectionist of diseases in india.</h2>
+<list>
+<ul>
+<li> Dr. Subham Solanki</li>
+</ul>
+</list>
+</div>
+<script>
+function openCity(cityName) {
+var i;
+var x = document.getElementsByClassName("city");
+for (i = 0; i < x.length; i++) {
+x[i].style.display = "none";
+}
+document.getElementById(cityName).style.display = "block";
+}
+</script>
+</body>
+</html>
+
+Gallstone.html
+
+<!DOCTYPE html>
+<html>
+<title>disease</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<body Style="background-image: url('dashboard.jpg');">
+<div class="w3-container" style="text-align:center">
+<h2 style="text-align:center">Gallstone</h2>
+<p>A gallstone is a stone formed within the gallbladder out of
+precipitated bile components.The term cholelithiasis
+may refer to the presence of gallstones or to any disease
+caused by gallstones, and choledocholithiasis refers to
+presence of migrated gallstones within bile ducts. .</p>
+</div>
+<div class="w3-bar w3-black">
+<button class="w3-bar-item w3-button" onclick="openCity('London')">Symptoms of Diseases.</button>
+<button class="w3-bar-item w3-button" onclick="openCity('Paris')">Precautions of diseases.</button>
+<button class="w3-bar-item w3-button" onclick="openCity('Tokyo')">Name of perfectionist of diseases in india.</button>
+</div>
+<div id="London" class="w3-container city">
+<h2 style="text-align:center">Symptoms of Diseases.</h2>
+<list>
+<ul>
+<li> Sudden and rapidly intensifying pain in the upper
+right portion of your abdomen.
+</li>
+<li> Sudden and rapidly intensifying pain in the center of
+your abdomen, just below your breastbone. </li>
+<li>  Back pain between your shoulder blades. </li>
+<li>  Pain in your right shoulder </li>
+<li> Nausea or vomiting.   </li>
+</ul>
+</list>
+</div>
+
+<div id="Paris" class="w3-container city" style="display:none" >
+<h2 style="text-align:center">Precautions of diseases</h2>
+<list>
+<ul>
+<li>  Regular exercise and low calorie diet help to keep
+stones away.  </li>
+<li>   Avoid skipping meals as this increases the chances of
+stone formation. </li>
+<li>  people who are intending to lose weight should not
+do it   </li>
+<li> very rapidly, aim to lose 500 mg to 1 kg weight/week. </li>
+
+</ul>
+</list>
+</div>
+
+<div id="Tokyo" class="w3-container city" style="display:none">
+<h2 style="text-align:center">Name of perfectionist of diseases in india.</h2>
+<list>
+<ul>
+<li> Dr. Abhijeet Singh</li>
+</ul>
+</list>
+</div>
+
+<script>
+function openCity(cityName) {
+var i;
+var x = document.getElementsByClassName("city");
+for (i = 0; i < x.length; i++) {
+x[i].style.display = "none";
+}
+document.getElementById(cityName).style.display = "block";
+}
+</script>
+</body>
+</html>
+
+Gluten.html
+
+<!DOCTYPE html>
+<html>
+<title>disease</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<body Style="background-image: url('dashboard.jpg');">
+
+<div class="w3-container" style="text-align:center">
+<h2 style="text-align:center">Gluten Intolerance Defination</h2>
+<p>Gluten is a protein found primarily in wheat, barley and rye. If a person has a gluten intolerance, this
+protein can cause digestive problems such as gassiness, abdominal pain or diarrhea.
+Gluten intolerance is sometimes confused with Celiac disease, or thought of as a food allergy. While
+avoiding particular foods is a treatment strategy for all three, these are not the same conditions.
+</p>
+</div>
+<div class="w3-bar w3-black">
+<button class="w3-bar-item w3-button" onclick="openCity('London')">Symptoms of Diseases.</button>
+<button class="w3-bar-item w3-button" onclick="openCity('Paris')">Precautions of diseases.</button>
+<button class="w3-bar-item w3-button" onclick="openCity('Tokyo')">Name of perfectionist of diseases in india.</button>
+</div>
+<div id="London" class="w3-container city">
+<h2 style="text-align:center">Symptoms of Diseases.</h2>
+<list>
+<ul>
+<li>  nausea and vomiting </li>
+<li>  diarrhea </li>
+<li> rritation of your mouth and throat </li>
+<li>  hives and rash  </li>
+<li>nasal congestion   </li>
+<li>eye irritation   </li>
+<li>difficulty breathing  </li>
+</ul>
+</list>
+<p> Symptoms related to a wheat allergy will usually begin within minutes of consuming the
+wheat. However, they can begin up to two hours after. </p>
+</div>
+<div id="Paris" class="w3-container city" style="display:none" >
+<h2 style="text-align:center">Precautions of diseases</h2>
+<list>
+<ul>
+<li>  Clean all surfaces and utensils carefully before starting work (pots, pans,
+baking tins, cutlery, cooking spoons, dishes etc.).
+</li>
+<li>  Wooden utensils are difficult to clean. It is advisable to use easy-to-clean
+utensils made of glass or metal, or to use separate utensils exclusively
+for gluten-free food. </li>
+<li>  Always store gluten-free products and foods containing gluten
+separately (separate jars, bread baskets etc.).   </li>
+
+
+</ul>
+</list>
+</div>
+
+<div id="Tokyo" class="w3-container city" style="display:none">
+<h2 style="text-align:center">Name of perfectionist of diseases in india.</h2>
+<list>
+<ul>
+<li> Dr. Rohit Dayal</li>
+</ul>
+</list>
+</div>
+
+<script>
+function openCity(cityName) {
+var i;
+var x = document.getElementsByClassName("city");
+for (i = 0; i < x.length; i++) {
+x[i].style.display = "none";
+}
+document.getElementById(cityName).style.display = "block";
+}
+</script>
+</body>
+
+
+</html>
+
+Gred.html
+
+<!DOCTYPE html>
+<html>
+<title>disease</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<body Style="background-image: url('dashboard.jpg');">
+
+<div class="w3-container" style="text-align:center">
+<h2 style="text-align:center">Gastroesophageal Reflux Disease(GRED)</h2>
+<p>Gastroesophageal reflux disease (GERD) occurs when stomach acid frequently
+flows back into the tube connecting your mouth and stomach. This backwash
+(acid reflux) can irritate the lining of your stomach
+Many people experience acid reflux from time to time. GERD is mild acid reflux
+that occurs at least twice a week, or moderate to severe acid reflux that occurs
+at least once a week </p>
+</div>
+
+<div class="w3-bar w3-black">
+<button class="w3-bar-item w3-button" onclick="openCity('London')">Symptoms of Diseases.</button>
+<button class="w3-bar-item w3-button" onclick="openCity('Paris')">Precautions of diseases.</button>
+<button class="w3-bar-item w3-button" onclick="openCity('Tokyo')">Name of perfectionist of diseases in india.</button>
+</div>
+
+<div id="London" class="w3-container city">
+<h2 style="text-align:center">Symptoms of Diseases.</h2>
+<list >
+<ul>
+<li>  A burning sensation in your chest (heartburn), usually after eating, which might be worse at night   </li>
+<li>  Chest pain  </li>
+<li>  Difficulty swallowing</li>
+<li> Regurgitation of food or sour liquid   </li>
+<li>  Sensation of a lump in your throat  </li>
+
+</ul>
+</list>
+</div>
+
+<div id="Paris" class="w3-container city" style="display:none" >
+<h2 style="text-align:center">Precautions of diseases</h2>
+<list>
+<ul>
+<li>    Avoid lying down for three hours after a meal.   </li>
+<li>   Eat smaller meals more frequently throughout the day. </li>
+<li>   Wear loose-fitting clothing to avoid pressure on your abdomen.</li>
+<li>  Lose excess weight.</li>
+<li>  Quit smoking.</li>
+<li> Raise the head of your bed six to eight inches by placing wooden blocks under your bedposts.</li>
+
+</ul>
+</list>
+</div>
+
+<div id="Tokyo" class="w3-container city" style="display:none">
+<h2 style="text-align:center">Name of perfectionist of diseases in india.</h2>
+<list>
+<ul>
+<li> Dr. Shyaam Agarwal</li>
+</ul>
+</list>
+</div>
+
+<script>
+function openCity(cityName) {
+var i;
+var x = document.getElementsByClassName("city");
+for (i = 0; i < x.length; i++) {
+x[i].style.display = "none";
+}
+document.getElementById(cityName).style.display = "block";
+}
+</script>
+
+</body>
+</html>
+
+ibd.html
+
+<!DOCTYPE html>
+<html>
+<title>disease</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<body Style="background-image: url('dashboard.jpg');">
+
+<div class="w3-container" style="text-align:center">
+<h2 style="text-align:center">Inflammatory bowel disease (IBD)</h2>
+<p>Inflammatory bowel disease (IBD) is an umbrella term used to describe
+disorders that involve chronic inflammation of your digestive tract.
+Types of IBD include:
+Ulcerative colitis. This condition involves inflammation and sores (ulcers)
+along the superficial lining of your large intestine (colon) and rectum.
+Crohn's disease. This type of IBD is characterized by inflammation of the
+lining of your digestive tract, which often can involve the deeper layers
+of the digestive tract.
+Both ulcerative colitis and Crohn's disease usually are characterized by
+diarrhea, rectal bleeding, abdominal pain, fatigue and weight loss.</p>
+</div>
+
+<div class="w3-bar w3-black">
+<button class="w3-bar-item w3-button" onclick="openCity('London')">Symptoms of Diseases.</button>
+<button class="w3-bar-item w3-button" onclick="openCity('Paris')">Precautions of diseases.</button>
+<button class="w3-bar-item w3-button" onclick="openCity('Tokyo')">Name of perfectionist of diseases in india.</button>
+</div>
+
+<div id="London" class="w3-container city">
+<h2 style="text-align:center">Symptoms of Diseases.</h2>
+<list >
+<ul>
+<li>  Diarrhea   </li>
+<li> Fatigue</li>
+<li> Abdominal pain and cramping </li>
+<li> Blood in your stool </li>
+<li> Reduced appetite   </li>
+<li> Unintended weight loss   </li>
+</ul>
+</list>
+</div>
+
+<div id="Paris" class="w3-container city" style="display:none" >
+<h2 style="text-align:center">Precautions of diseases</h2>
+<list>
+<ul>
+<li>  Follow a low residue diet to relieve abdominal pain and diarrhea.  </li>
+<li>  If you have strictures, it is especially important to avoid nuts,
+seeds, beans and kernels.</li>
+<li>   Avoid foods that may increase stool output such as fresh fruits
+and vegetables, prunes and caffeinated beverages  </li>
+
+
+</ul>
+</list>
+</div>
+
+<div id="Tokyo" class="w3-container city" style="display:none">
+<h2 style="text-align:center">Name of perfectionist of diseases in india.</h2>
+<list>
+<ul>
+<li> Dr. Aniket Gupta</li>
+</list>
+</div>
+
+<script>
+function openCity(cityName) {
+var i;
+var x = document.getElementsByClassName("city");
+for (i = 0; i < x.length; i++) {
+x[i].style.display = "none";
+}
+document.getElementById(cityName).style.display = "block";
+}
+</script>
+
+</body>
+</html>
+
+Peptic.html
+
+<!DOCTYPE html>
+<html>
+<title>disease</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<body Style="background-image: url('dashboard.jpg');">
+
+<div class="w3-container" style="text-align:center">
+<h2 style="text-align:center">Peptic Ulcer Disease and Gastritis</h2>
+<p>Most ulcers are caused by bacteria called Helicobacter pylori (H. pylori), which are believed to be
+transmitted from person to person through close contact and exposure to fecal matter or vomit. The
+bacteria cause an infection that weakens the protective mucus in the stomach and duodenum,
+allowing acid to get through to the sensitive lining beneath. Both the acid and bacteria irritate the
+lining and cause an ulcer to form. </p>
+</div>
+
+<div class="w3-bar w3-black">
+<button class="w3-bar-item w3-button" onclick="openCity('London')">Symptoms of Diseases.</button>
+<button class="w3-bar-item w3-button" onclick="openCity('Paris')">Precautions of diseases.</button>
+<button class="w3-bar-item w3-button" onclick="openCity('Tokyo')">Name of perfectionist of diseases in india.</button>
+</div>
+
+<div id="London" class="w3-container city">
+<h2 style="text-align:center">Symptoms of Diseases.</h2>
+<list>
+<ul>
+<li> Bloating   </li>
+<li>  Burping  </li>
+<li> Dark stool (with gastritis or an ulcer)</li>
+<li>  Nausea   </li>
+<li>  * Poor appetite* Vomiting </li>
+<li>  Weight loss  </li>
+
+</ul>
+</list>
+</div>
+
+<div id="Paris" class="w3-container city" style="display:none" >
+<h2 style="text-align:center">Precautions of diseases</h2>
+<list>
+<ul>
+<li>   Avoid foods that irritate your stomach.   </li>
+<li>  Stop smoking. Heavy smokers are more likely to develop duodenal ulcers than nonsmokers.  </li>
+<li>   Practice moderation. Heavy consumption of alcohol and has been shown to contribute to
+the development of ulcers, so keep your intake to a minimum.
+</li>
+<li>  Take nonsteroidal anti-inflammatory drugs (NSAIDS including aspirin and ibuprofen) with
+food, as this may decrease your risk of irritating the lining of your stomach .</li>
+
+</ul>
+</list>
+</div>
+
+<div id="Tokyo" class="w3-container city" style="display:none">
+<h2 style="text-align:center">Name of perfectionist of diseases in india.</h2>
+<list>
+<ul>
+<li> Dr. Rishi Mohan</li>
+</ul>
+</list>
+</div>
+
+<script>
+function openCity(cityName) {
+var i;
+var x = document.getElementsByClassName("city");
+for (i = 0; i < x.length; i++) {
+x[i].style.display = "none";
+}
+document.getElementById(cityName).style.display = "block";
+}
+</script>
+
+</body>
+</html>
+
+Viral.html
+
+<!DOCTYPE html>
+<html>
+<title>disease</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<body Style="background-image: url('dashboard.jpg');">
+
+<div class="w3-container" style="text-align:center">
+<h2 style="text-align:center">Viral Gastroenteritis(Stomach Flu)</h2>
+<p>Viral gastroenteritis is an intestinal infection marked by watery diarrhea,
+abdominal cramps, nausea or vomiting, and sometimes fever. .  </p>
+
+</div>
+
+<div class="w3-bar w3-black">
+<button class="w3-bar-item w3-button" onclick="openCity('London')">Symptoms of Diseases.</button>
+<button class="w3-bar-item w3-button" onclick="openCity('Paris')">Precautions of diseases.</button>
+<button class="w3-bar-item w3-button" onclick="openCity('Tokyo')">Name of perfectionist of diseases in india.</button>
+</div>
+
+<div id="London" class="w3-container city">
+<h2 style="text-align:center">Symptoms of Diseases.</h2>
+<list >
+<ul>
+<li>watery, non-bloody diarrhea   </li>
+<li> stomach cramps and pain  </li>
+<li> nausea, vomiting, or both</li>
+<li> occasional muscle aches or headache  </li>
+<li> low-grade fever </li>
+</ul>
+</list></br>
+<p>In most cases, symptoms appear within 1-3 days of infection and can range from mild to
+severe. People often begin to experience symptoms 12-48 hours after being exposed to the
+virus. Symptoms often last for 3-7 days. In severe cases, they can last up to 10 days.
+</p>
+</div>
+
+<div id="Paris" class="w3-container city" style="display:none" >
+<h2 style="text-align:center">Precautions of diseases</h2>
+<list>
+<ul>
+<li>    Clean kitchen surfaces with a disinfectant (cleaner that kills germs),
+especially when working with raw meat or eggs.    </li>
+<li>  Keep raw meat, eggs and poultry away from foods that are eaten raw.</li>
+<li>   Avoid eating raw or undercooked meat, eggs and shellfish.
+</li>
+<li>  Consume only pasteurized dairy products and apple juice. Pasteurization
+is a heating process that kills germs.</li>
+<li>   Rinse fruits and vegetables before eating.
+</li>
+<li>    Drink bottled water and avoid ice cubes when traveling, especially in
+developing countries. .</li>
+</ul>
+</list>
+</div>
+
+<div id="Tokyo" class="w3-container city" style="display:none">
+<h2 style="text-align:center">Name of perfectionist of diseases in india.</h2>
+<list>
+<ul>
+<li> Dr. Rahul Tomar</li>
+</ul>
+</list>
+</div>
+
+<script>
+function openCity(cityName) {
+var i;
+var x = document.getElementsByClassName("city");
+for (i = 0; i < x.length; i++) {
+x[i].style.display = "none";
+}
+document.getElementById(cityName).style.display = "block";
+}
+</script>
+
+</body>
+</html>
+
+Aca.html
+
+<!DOCTYPE html>
+<html>
+<title>disease</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<body Style="background-image: url('dashboard.jpg');">
+
+<div class="w3-container" style="text-align:center">
+<h2 style="text-align:center">Acute Cerebellar Ataxia(ACA</h2>
+<p>ACA is a disorder that occurs when the
+cerebellum becomes inflamed or damaged.
+The cerebellar is the area of the brain
+responsible for controlling gait and muscle
+coordination.</p>
+</div>
+
+<div class="w3-bar w3-black">
+<button class="w3-bar-item w3-button" onclick="openCity('London')">Symptoms of Diseases.</button>
+<button class="w3-bar-item w3-button" onclick="openCity('Paris')">Precautions of diseases.</button>
+<button class="w3-bar-item w3-button" onclick="openCity('Tokyo')">Name of perfectionist of diseases in india.</button>
+</div>
+
+<div id="London" class="w3-container city">
+<h2 style="text-align:center">Symptoms of Diseases.</h2>
+<list >
+<ul>
+<li> Impaired coordination in legs and arms </li>
+<li>Headaches and vocal change  </li>
+<li> Slurred speech </li>
+<li> Uncontrolled or repetitive eye movement  </li>
+<li> Dizziness and frequent stumbling  </li>
+
+</ul>
+</list>
+</div>
+
+<div id="Paris" class="w3-container city" style="display:none" >
+<h2 style="text-align:center">Precautions of diseases</h2>
+<list>
+<ul>
+<li>  Avoiding excessive alcohol consumption  </li>
+<li>  Maintaining a healthy diet </li>
+<li>  Keeping cholesterol in control  </li>
+<li>  Keeping blood pressure in control </li>
+<li>  Reducing your risk of stroke by exercising</li>
+
+
+</ul>
+</list>
+</div>
+
+<div id="Tokyo" class="w3-container city" style="display:none">
+<h2 style="text-align:center">Name of perfectionist of diseases in india.</h2>
+<list>
+<ul>
+<li> Dr. Ram kumar Arya</li>
+</ul>
+</list>
+</div>
+
+<script>
+function openCity(cityName) {
+var i;
+var x = document.getElementsByClassName("city");
+for (i = 0; i < x.length; i++) {
+x[i].style.display = "none";
+}
+document.getElementById(cityName).style.display = "block";
+}
+</script>
+
+</body>
+</html>
+
+
+Alzimer.html
+
+<!DOCTYPE html>
+<html>
+<title>disease</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<body Style="background-image: url('dashboard.jpg');">
+
+<div class="w3-container" style="text-align:center">
+<h2 style="text-align:center">Alzheimer Disease</h2>
+<p>Alzheimer disease is a condition that affects the brain.
+Alzheimer’s disease is a neurological condition in which the death of
+brain cells causes memory loss and cognitive
+decline.</p>
+</div>
+
+<div class="w3-bar w3-black">
+<button class="w3-bar-item w3-button" onclick="openCity('London')">Symptoms of Diseases.</button>
+<button class="w3-bar-item w3-button" onclick="openCity('Paris')">Precautions of diseases.</button>
+<button class="w3-bar-item w3-button" onclick="openCity('Tokyo')">Name of perfectionist of diseases in india.</button>
+</div>
+
+<div id="London" class="w3-container city">
+<h2 style="text-align:center">Symptoms of Diseases.</h2>
+<list >
+<ul>
+<li> Memory Loss </li>
+<li> Cognitive Deficits</li>
+<li>  Problem with recognition </li>
+<li> Problem with reading, speaking and writing </li>
+<li>  Personality or behavior changes  </li>
+</ul>
+</list>
+</div>
+
+<div id="Paris" class="w3-container city" style="display:none" >
+<h2 style="text-align:center">Precautions of diseases</h2>
+<list>
+<ul>
+<li> Stopping Smoking </li>
+<li>  Avoid alcohol</li>
+<li>  Problem with recognition </li>
+<li>  Blood pressure is normal and controlled </li>
+<li> Take a perfect and healthy balanced diet  </li>
+</ul>
+</list>
+</div>
+
+<div id="Tokyo" class="w3-container city" style="display:none">
+<h2 style="text-align:center">Name of perfectionist of diseases in india.</h2>
+<list>
+<ul>
+<li> Dr. Amit Rawat</li>
+</ul>
+</list>
+</div>
+
+<script>
+function openCity(cityName) {
+var i;
+var x = document.getElementsByClassName("city");
+for (i = 0; i < x.length; i++) {
+x[i].style.display = "none";
+}
+document.getElementById(cityName).style.display = "block";
+}
+</script>
+
+</body>
+</html>
+
+Brain.html
+
+<!DOCTYPE html>
+<html>
+<title>disease</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<body Style="background-image: url('dashboard.jpg');">
+
+<div class="w3-container" style="text-align:center">
+<h2 style="text-align:center">Brain Cancer</h2>
+<p>Brain cancer is an overgrowth of cells in your
+brain that forms masses called tumors. Brain
+cancer can grow very quickly, depending on
+the type of tumor.</p>
+</div>
+
+<div class="w3-bar w3-black">
+<button class="w3-bar-item w3-button" onclick="openCity('London')">Symptoms of Diseases.</button>
+<button class="w3-bar-item w3-button" onclick="openCity('Paris')">Precautions of diseases.</button>
+<button class="w3-bar-item w3-button" onclick="openCity('Tokyo')">Name of perfectionist of diseases in india.</button>
+</div>
+
+<div id="London" class="w3-container city">
+<h2 style="text-align:center">Symptoms of Diseases.</h2>
+<list >
+<ul>
+<li> Headaches usually worse in morning </li>
+<li> A lack of balance and coordination</li>
+<li> Vomiting </li>
+<li> Difficulty in walking, talking and thinking  </li>
+<li> Vision and Speech problem   </li>
+<li> Memory lapses and personality changes    </li>
+</ul>
+</div>
+
+<div id="Paris" class="w3-container city" style="display:none" >
+<h2 style="text-align:center">Precautions of diseases</h2>
+<list>
+<ul>
+<li>  Avoiding Smoking and alcohol </li>
+<li>  Avoid exposure to pesticides, insecticides</li>
+<li>  Avoid unnecessary exposure to radiation  </li>
+<li>  Avoid exposure to carcinogenic chemicals </li>
+
+</ul>
+</list>
+</div>
+
+<div id="Tokyo" class="w3-container city" style="display:none">
+<h2 style="text-align:center">Name of perfectionist of diseases in india.</h2>
+<list>
+<ul>
+<li> Dr. Subham Singh</li>
+</ul>
+</list>
+</div>
+
+<script>
+function openCity(cityName) {
+var i;
+var x = document.getElementsByClassName("city");
+for (i = 0; i < x.length; i++) {
+x[i].style.display = "none";
+}
+document.getElementById(cityName).style.display = "block";
+}
+</script></body>
+</html>
+
+Depression.html
+
+<!DOCTYPE html>
+<html>
+<title>disease</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<body Style="background-image: url('dashboard.jpg');">
+
+<div class="w3-container" style="text-align:center">
+<h2 style="text-align:center">Depression Disorder</h2>
+<p>Depression is a mood disorder that causes a
+persistent feeling of sadness and loss of
+interest. It affects how you feel, think and
+behave and can lead to a variety of emotional
+problems and physical problems.</p>
+</div>
+<div class="w3-bar w3-black">
+<button class="w3-bar-item w3-button" onclick="openCity('London')">Symptoms of Diseases.</button>
+<button class="w3-bar-item w3-button" onclick="openCity('Paris')">Precautions of diseases.</button>
+<button class="w3-bar-item w3-button" onclick="openCity('Tokyo')">Name of perfectionist of diseases in india.</button>
+</div>
+
+<div id="London" class="w3-container city">
+<h2 style="text-align:center">Symptoms of Diseases.</h2>
+<list >
+<ul>
+<li>  Feelings of sadness and tearfulness  </li>
+<li>  Irritation and frustration </li>
+<li>  Anxiety, agitation or restlessness</li>
+<li> Trouble in thinking, making decisions   </li>
+<li> Tiredness and lack of energy   </li>
+
+</ul>
+</list>
+</div>
+
+<div id="Paris" class="w3-container city" style="display:none" >
+<h2 style="text-align:center">Precautions of diseases</h2>
+<list>
+<ul>
+<li>   Find ways to handle stress  </li>
+<li>   Improve your self- esteem </li>
+<li>   Eat well and exercise regularly  </li>
+<li>  Get regular medical checkups </li>
+<li>  Reducing your risk of stroke by exercising</li>
+
+
+</ul>
+</list>
+</div>
+
+<div id="Tokyo" class="w3-container city" style="display:none">
+<h2 style="text-align:center">Name of perfectionist of diseases in india.</h2>
+<list>
+<ul>
+<li> Dr. Amit Agarwal</li>
+</ul>
+</list>
+</div>
+
+<script>
+function openCity(cityName) {
+var i;
+var x = document.getElementsByClassName("city");
+for (i = 0; i < x.length; i++) {
+x[i].style.display = "none";
+}
+document.getElementById(cityName).style.display = "block";
+}
+</script></body>
+</html>
+
+Hemorrhage.html
+
+<!DOCTYPE html>
+<html>
+<title>disease</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<body Style="background-image: url('dashboard.jpg');">
+
+<div class="w3-container" style="text-align:center">
+<h2 style="text-align:center">Brain Hemorrhage</h2>
+<p>Brain hemorrhage is when blood suddenly
+bursts into brain tissue causing damage to
+your brain. Brain hemorrhage is not as
+common as ischemic stroke, but it is more
+serious.</p>
+</div>
+
+<div class="w3-bar w3-black">
+<button class="w3-bar-item w3-button" onclick="openCity('London')">Symptoms of Diseases.</button>
+<button class="w3-bar-item w3-button" onclick="openCity('Paris')">Precautions of diseases.</button>
+<button class="w3-bar-item w3-button" onclick="openCity('Tokyo')">Name of perfectionist of diseases in india.</button>
+</div>
+
+<div id="London" class="w3-container city">
+<h2 style="text-align:center">Symptoms of Diseases.</h2>
+<list >
+<ul>
+<li>Trouble with vision in one or both eyes </li>
+<li>Loss of balance and coordination </li>
+<li>Sudden weakness and nausea </li>
+<li>Vomiting and headache  </li>
+<li>Loss of consciousness and confusion  </li>
+
+</ul>
+</list>
+</div>
+
+<div id="Paris" class="w3-container city" style="display:none" >
+<h2 style="text-align:center">Precautions of diseases</h2>
+<list>
+<ul>
+<li>  Take care of heart diseases </li>
+<li>  Take care of heart diseases </li>
+<li>  Blood pressure must be in control </li>
+<li>  Avoiding smoking </li>
+<li> Maintaining a healthy diet</li>
+
+
+</ul>
+</list>
+</div>
+
+<div id="Tokyo" class="w3-container city" style="display:none">
+<h2 style="text-align:center">Name of perfectionist of diseases in india.</h2>
+<list>
+<ul>
+<li> Dr. Chetan Singh</li>
+</ul>
+</list>
+</div>
+
+<script>
+function openCity(cityName) {
+var i;
+var x = document.getElementsByClassName("city");
+for (i = 0; i < x.length; i++) {
+x[i].style.display = "none";
+}
+document.getElementById(cityName).style.display = "block";
+}
+</script></body>
+</html>
+
+Arrhy.html
+
+<!DOCTYPE html>
+<html>
+<title>disease</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<body Style="background-image: url('dashboard.jpg');">
+
+<div class="w3-container" style="text-align:center">
+<h2 style="text-align:center">ARRHYTHMIA</h2>
+<p>Improper beating of the heart, when irregular, too fast or too
+slow
+Cardiac arrhythmia occurs when electrical impulses in the
+heart don’t work properly.</p>
+</div>
+
+<div class="w3-bar w3-black">
+<button class="w3-bar-item w3-button" onclick="openCity('London')">Symptoms of Diseases.</button>
+<button class="w3-bar-item w3-button" onclick="openCity('Paris')">Precautions of diseases.</button>
+<button class="w3-bar-item w3-button" onclick="openCity('Tokyo')">Name of perfectionist of diseases in india.</button>
+</div>
+
+<div id="London" class="w3-container city">
+<h2 style="text-align:center">Symptoms of Diseases.</h2>
+<list >
+<ul>
+<li>  A fluttering in your chest </li>
+<li> A racing heart beat </li>
+<li>  A slow heart beat  </li>
+<li>  Chest pain   </li>
+<li> Shortness of breath   </li>
+
+</ul>
+</list>
+</div>
+
+<div id="Paris" class="w3-container city" style="display:none" >
+<h2 style="text-align:center">Precautions of diseases</h2>
+<list>
+<ul>
+<li>    Eating a heart healthy diet  </li>
+<li>   Staying physically active  </li>
+<li>    Keeping a healthy weight   </li>
+<li>   Avoid smoking  </li>
+<li>  Limit bad fats, added sugar, salt and alcohol  </li>
+
+</ul>
+</list>
+</div>
+
+<div id="Tokyo" class="w3-container city" style="display:none">
+<h2 style="text-align:center">Name of perfectionist of diseases in india.</h2>
+<list>
+<ul>
+<li> Dr. VIVEKA KUMAR (MBBS, MD-Medicine ,DM-cardiology)</li>
+</ul>
+</list>
+</div>
+
+<script>
+function openCity(cityName) {
+var i;
+var x = document.getElementsByClassName("city");
+for (i = 0; i < x.length; i++) {
+x[i].style.display = "none";
+}
+document.getElementById(cityName).style.display = "block";
+}
+</script>
+
+</body></html>
+
+Cad.html
+
+<!DOCTYPE html>
+<html>
+<title>disease</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<body Style="background-image: url('dashboard.jpg');">
+
+<div class="w3-container" style="text-align:center">
+<h2 style="text-align:center">Coronary Artery Disease (CAD)</h2>
+<p>CAD is the most common heart problem. With CAD you may
+get blockages in your coronary arteries(the vessels that
+supply blood to your heart).
+Coronary heart disease can give you pain in your chest, called
+angina, or lead to a heart attack.</p>
+</div>
+
+<div class="w3-bar w3-black">
+<button class="w3-bar-item w3-button" onclick="openCity('London')">Symptoms of Diseases.</button>
+<button class="w3-bar-item w3-button" onclick="openCity('Paris')">Precautions of diseases.</button>
+<button class="w3-bar-item w3-button" onclick="openCity('Tokyo')">Name of perfectionist of diseases in india.</button>
+</div>
+
+<div id="London" class="w3-container city">
+<h2 style="text-align:center">Symptoms of Diseases.</h2>
+<list >
+<ul>
+<li> Chest pain </li>
+<li>  Burning</li>
+<li>  Shortness of breath  </li>
+<li>  Abnormal heart rhythm  </li>
+<li>Heaviness  </li>
+
+</ul>
+</list>
+</div>
+
+<div id="Paris" class="w3-container city" style="display:none" >
+<h2 style="text-align:center">Precautions of diseases</h2>
+<list>
+<ul>
+<li>  Limiting alcohol intake </li>
+<li>  Maintaining a healthy body weight </li>
+<li>  Maintaining healthy cholesterol levels  </li>
+<li>   Undertaking regular physical exercise</li>
+<li> Eating a balanced diet </li>
+</ul>
+</list>
+</div>
+
+<div id="Tokyo" class="w3-container city" style="display:none">
+<h2 style="text-align:center">Name of perfectionist of diseases in india.</h2>
+<list>
+<ul>
+<li>Dr. Vanita Arora(best cardiologist electrophysiologist) </li>
+</ul>
+</list>
+</div>
+
+<script>
+function openCity(cityName) {
+var i;
+var x = document.getElementsByClassName("city");
+for (i = 0; i < x.length; i++) {
+x[i].style.display = "none";
+}
+document.getElementById(cityName).style.display = "block";
+}
+</script>
+
+</body></html>
+Cardi.html
+
+<!DOCTYPE html>
+<html>
+<title>disease</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<body Style="background-image: url('dashboard.jpg');">
+
+<div class="w3-container" style="text-align:center">
+<h2 style="text-align:center">CARDIOMYOPATHY</h2>
+<p>An acquired or hereditary disease of heart muscle, this
+condition makes it hard for the heart to deliver blood to the
+body, and can lead to heart failure.</p>
+</div>
+
+<div class="w3-bar w3-black">
+<button class="w3-bar-item w3-button" onclick="openCity('London')">Symptoms of Diseases.</button>
+<button class="w3-bar-item w3-button" onclick="openCity('Paris')">Precautions of diseases.</button>
+<button class="w3-bar-item w3-button" onclick="openCity('Tokyo')">Name of perfectionist of diseases in india.</button>
+</div>
+
+<div id="London" class="w3-container city">
+<h2 style="text-align:center">Symptoms of Diseases.</h2>
+<list >
+<ul>
+<li> Breathlessness with exertion or even at rest </li>
+<li>  Cough while lying down
+</li>
+<li>  Fatigue </li>
+<li> Chest discomfort or pressure </li>
+<li>  Bloating of the abdomen due to fluid buildup
+</li>
+
+</ul>
+</list>
+</div>
+
+<div id="Paris" class="w3-container city" style="display:none" >
+<h2 style="text-align:center">Precautions of diseases</h2>
+<list>
+<ul>
+<li>  Avoiding the use of alcohol or cocaine  </li>
+<li>  Controlling high blood pressure, high cholesterol and
+diabetes</li>
+<li>  Eating a healthy diet  </li>
+<li>   Getting regular exercise</li>
+<li>Reducing your stress</li>
+
+</ul>
+</list>
+</div>
+
+<div id="Tokyo" class="w3-container city" style="display:none">
+<h2 style="text-align:center">Name of perfectionist of diseases in india.</h2>
+<list>				<ul>
+<li> Dr. Ravindra K Tongia (MBBS, MD-Medicine & Therapeutics)</li>
+</ul>				</list>
+</div>
+<script>
+function openCity(cityName) {
+var i;
+var x = document.getElementsByClassName("city");
+for (i = 0; i < x.length; i++) {
+x[i].style.display = "none";
+}
+document.getElementById(cityName).style.display = "block";
+}
+</script></body>
+</html>
+
+Cardiac.html
+
+<!DOCTYPE html>
+<html>
+<title>disease</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<body Style="background-image: url('dashboard.jpg');">
+
+<div class="w3-container" style="text-align:center">
+<h2 style="text-align:center">CARDIAC ARREST</h2>
+<p>Sudden, unexpected loss of heart function, breathing and
+consciousness.
+In cardiac arrest, the heart abruptly stops beating.
+Without prompt intervention, it can result in the person’s
+death.</p>
+</div>
+
+<div class="w3-bar w3-black">
+<button class="w3-bar-item w3-button" onclick="openCity('London')">Symptoms of Diseases.</button>
+<button class="w3-bar-item w3-button" onclick="openCity('Paris')">Precautions of diseases.</button>
+<button class="w3-bar-item w3-button" onclick="openCity('Tokyo')">Name of perfectionist of diseases in india.</button>
+</div>
+
+<div id="London" class="w3-container city">
+<h2 style="text-align:center">Symptoms of Diseases.</h2>
+<list >
+<ul>
+<li>Become dizzy</li>
+<li>Be short of breath</li>
+<li>Feel fatigue or weak</li>
+<li>Vomit</li>
+<li>Chest pain
+</li>
+
+</ul>
+</list>
+</div>
+
+<div id="Paris" class="w3-container city" style="display:none" >
+<h2 style="text-align:center">Precautions of diseases</h2>
+<list>
+<ul>
+<li>Eat a healthy diet</li>
+<li>Stay active :Exercise</li>
+<li>Lose weight</li>
+<li>Reduce your stress leve </li>
+<li>Stop using tobacco and drinking</li>
+
+</ul>
+</list>
+</div>
+
+<div id="Tokyo" class="w3-container city" style="display:none">
+<h2 style="text-align:center">Name of perfectionist of diseases in india.</h2>
+<list>
+<ul>
+<li>Dr. V Jinadas(MBBS,MD-General Medicine)</li>
+</ul>
+</list>
+</div>
+
+<script>
+function openCity(cityName) {
+var i;
+var x = document.getElementsByClassName("city");
+for (i = 0; i < x.length; i++) {
+x[i].style.display = "none";
+}
+document.getElementById(cityName).style.display = "block";
+}
+</script>
+
+</body>
+</html>
+
+Heart.html
+
+<!DOCTYPE html>
+<html>
+<title>disease</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<body Style="background-image: url('dashboard.jpg');">
+
+<div class="w3-container" style="text-align:center">
+<h2 style="text-align:center">HEART VALVES DISEASE</h2>
+<p>In heart valves disease, one or more of the valves in your
+heart doesn’t work properly.
+Your heart has four valves that keep blood flowing in the
+correct direction. In some cases, one or more of the valves
+don’t open or close properly.</p>
+</div>
+
+<div class="w3-bar w3-black">
+<button class="w3-bar-item w3-button" onclick="openCity('London')">Symptoms of Diseases.</button>
+<button class="w3-bar-item w3-button" onclick="openCity('Paris')">Precautions of diseases.</button>
+<button class="w3-bar-item w3-button" onclick="openCity('Tokyo')">Name of perfectionist of diseases in india.</button>
+</div>
+
+<div id="London" class="w3-container city">
+<h2 style="text-align:center">Symptoms of Diseases.</h2>
+<list>
+<ul>
+<li>FAINTING </li>
+<li>DIZZINESS</li>
+<li>SWELLING OF YOUR ANKLES AND FEET</li>
+<li>FATIGUE</li>
+<li>CHEST PAIN</li>
+
+</ul>
+</list>
+</div>
+
+<div id="Paris" class="w3-container city" style="display:none" >
+<h2 style="text-align:center">Precautions of diseases</h2>
+<list>
+<ul>
+<li>Eat a healthy diet</li>
+<li>Quit smoking</li>
+<li>Keep your teeth and gums healthy</li>
+<li>Keep blood pressure in check</li>
+<li>Get your heart murmur checked</li>
+
+</ul>
+</list>
+</div>
+
+<div id="Tokyo" class="w3-container city" style="display:none">
+<h2 style="text-align:center">Name of perfectionist of diseases in india.</h2>
+<list>
+<ul>
+<li> Dr. NARESH TREHAN (MBBS, DIPLOMA IN CARDIOLOGY)</li>
+</ul>
+</list>
+</div>
+
+<script>
+function openCity(cityName) {
+var i;
+var x = document.getElementsByClassName("city");
+for (i = 0; i < x.length; i++) {
+x[i].style.display = "none";
+}
+document.getElementById(cityName).style.display = "block";
+}
+</script>
+</body>
+</html>
+
+Heartfail.html
+
+<!DOCTYPE html>
+<html>
+<title>disease</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<body Style="background-image: url('dashboard.jpg');">
+
+<div class="w3-container" style="text-align:center">
+<h2 style="text-align:center">HEART FAILURE </h2>
+<p>A chronic condition in which the heart doesn’t pump blood as
+well as it should.
+Heart failure can occur if the heart cannot pump (systolic)or
+fill (diastolic) adequately.</p>
+</div>
+
+<div class="w3-bar w3-black">
+<button class="w3-bar-item w3-button" onclick="openCity('London')">Symptoms of Diseases.</button>
+<button class="w3-bar-item w3-button" onclick="openCity('Paris')">Precautions of diseases.</button>
+<button class="w3-bar-item w3-button" onclick="openCity('Tokyo')">Name of perfectionist of diseases in india.</button>
+</div>
+
+<div id="London" class="w3-container city">
+<h2 style="text-align:center">Symptoms of Diseases.</h2>
+<list >
+<ul>
+<li>Shortness of breath</li>
+<li>Weakness</li>
+<li>welling in legs, ankles and feet</li>
+<li>Reduce ability to exercise</li>
+<li>Lack of appetite and nausea</li>
+</ul>
+</list>
+</div>
+<div id="Paris" class="w3-container city" style="display:none" >
+<h2 style="text-align:center">Precautions of diseases</h2>
+<list>
+<ul>
+<li>Stick to a healthy weight</li>
+<li>Exercise regularly</li>
+<li>Eat fruits and vegetables, whole grains, and lean protein</li>
+<li>Get enough sleep</li>
+<li>Limit bad fats, added sugar, salt and alcohol</li>
+</ul>
+</list>
+</div>
+<div id="Tokyo" class="w3-container city" style="display:none">
+<h2 style="text-align:center">Name of perfectionist of diseases in india.</h2>
+<list>
+<ul>
+<li>Dr. Balbir singh(MBBS,MD-medicine,DM-cardiology) </li>
+</ul>
+</list>
+</div>
+<script>
+function openCity(cityName) {
+var i;
+var x = document.getElementsByClassName("city");
+for (i = 0; i < x.length; i++) {
+x[i].style.display = "none";
+}
+document.getElementById(cityName).style.display = "block";
+}
+</script>
+</body>
+</html>
+High.html
+<!DOCTYPE html>
+<html>
+<title>disease</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<body Style="background-image: url('dashboard.jpg');">
+<div class="w3-container" style="text-align:center">
+<h2 style="text-align:center">High Blood Pressure</h2>
+<p>A condition in which the force of the blood against the
+walls is too high. Usually hypertension is defined as blood
+/90, and is considered severe if the pressure is above
+180/120.</p>
+</div>
+<div class="w3-bar w3-black">
+<button class="w3-bar-item w3-button" onclick="openCity('London')">Symptoms of Diseases.</button>
+<button class="w3-bar-item w3-button" onclick="openCity('Paris')">Precautions of diseases.</button>
+<button class="w3-bar-item w3-button" onclick="openCity('Tokyo')">Name of perfectionist of diseases in india.</button>
+</div>
+<div id="London" class="w3-container city">
+<h2 style="text-align:center">Symptoms of Diseases.</h2>
+<list >
+<ul>
+<li>  Severe headaches </li>
+<li>  Nosebleed</li>
+<li> Fatigue or confusion </li>
+<li>  Vision problem  </li>
+<li>  Chest pain  </li>
+</ul>
+</list>
+</div>
+<div id="Paris" class="w3-container city" style="display:none" >
+<h2 style="text-align:center">Precautions of diseases</h2>
+<list>
+<ul>
+<li>  Exercise regularly </li>
+<li>  Eat a healthy diet</li>
+<li>   Reduce sodium in your diet   </li>
+<li> Reduce your stress </li>
+<li> Quit smoking </li>
+</ul>
+</list>
+</div>
+<div id="Tokyo" class="w3-container city" style="display:none">
+<h2 style="text-align:center">Name of perfectionist of diseases in india.</h2>
+<list>
+<ul>
+<li>DR.KSS BHAT(MBBS ,MD- GENERAL MEDICINE)</li>
+</ul>
+</list>
+</div>
+<script>
+function openCity(cityName) {
+var i;
+var x = document.getElementsByClassName("city");
+for (i = 0; i < x.length; i++) {
+x[i].style.display = "none";
+}
+document.getElementById(cityName).style.display = "block";
+}
+</script>
+</body>
+</html>
+Vsd.html
+<!DOCTYPE html>
+<html>
+<title>disease</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<body Style="background-image: url('dashboard.jpg');">
+<div class="w3-container" style="text-align:center">
+<h2 style="text-align:center">VENTRICULAR SEPTAL DEFECT (VSD)</h2>
+<p>A heart defect due to abnormal connection between the
+lower chambers of the heart (ventricles)
+It involves a hole in the wall between the heart’s lower
+chambers. </p>
+</div>
+<div class="w3-bar w3-black">
+<button class="w3-bar-item w3-button" onclick="openCity('London')">Symptoms of Diseases.</button>
+<button class="w3-bar-item w3-button" onclick="openCity('Paris')">Precautions of diseases.</button>
+<button class="w3-bar-item w3-button" onclick="openCity('Tokyo')">Name of perfectionist of diseases in india.</button>
+</div>
+<div id="London" class="w3-container city">
+<h2 style="text-align:center">Symptoms of Diseases.</h2>
+<list >
+<ul>
+<li>  Tires easily when eating or playing
+</li>
+<li>  Is not gaining weight</li>
+<li>  Becomes breathless when eating or crying </li>
+<li>  Breathes rapidly or is short of breath
+</li>
+<li>  Poor eating ,failure to thrive
+</li>
+</ul>
+</list>
+</div>
+<div id="Paris" class="w3-container city" style="display:none" >
+<h2 style="text-align:center">Precautions of diseases</h2>
+<list>
+<ul>
+<li>   Eat a balanced diet</li>
+<li>   Exercise regularly</li>
+<li>   Avoid risks   </li>
+<li>   Avoid infections  </li>
+<li>   Keep diabetes under control
+</li>
+</ul>
+</list>
+</div>
+<div id="Tokyo" class="w3-container city" style="display:none">
+<h2 style="text-align:center">Name of perfectionist of diseases in india.</h2>
+<list>
+<ul>
+<li> Dr. Ajay kaul(MBBS, MS-general surgery) </li>
+</ul>
+</list>
+</div>
+<script>
+function openCity(cityName) {
+var i;
+var x = document.getElementsByClassName("city");
+for (i = 0; i < x.length; i++) {
+x[i].style.display = "none";
+}
+document.getElementById(cityName).style.display = "block";
+}
+</script>
+</body>
+</html>
